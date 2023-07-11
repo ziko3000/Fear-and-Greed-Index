@@ -24,9 +24,10 @@ class Bot {
 
   async onReady(): Promise<void>{
     console.log(`Logged in as ${this.client.user!.tag}`);
-    
-    let fearGreedIndex = await this.api.getFearGreedIndex();
-    this.client.user!.setPresence({ activities: [{ name: `F&G Index: ${fearGreedIndex}`, type: ActivityType.Watching}] });
+    // Call this immediately once when the bot starts
+    this.updateBotPresence();
+    // Then call this every 5 minutes
+    setInterval(this.updateBotPresence.bind(this), 300000)
     
     try {
       await this.commandHandler.registerCommands(this.client);
@@ -35,6 +36,7 @@ class Bot {
       console.error('Failed to register slash commands:', error);
     }
   }
+  
 
   async onInteractionCreate(interaction: Interaction) : Promise<void> {
     if (!interaction.isCommand()) return;
@@ -44,7 +46,17 @@ class Bot {
   login() : void {
     this.client.login(process.env.BOT_TOKEN);
   }
+
+  async updateBotPresence(): Promise<void> {
+    try {
+      let fearGreedIndex = await this.api.getFearGreedIndex();
+      this.client.user!.setPresence({ activities: [{ name: `F&G Index: ${fearGreedIndex}`, type: ActivityType.Watching}] });
+    } catch (error) {
+      console.error('Failed to update bot presence:', error);
+    }
+  }
 }
+
 
 const bot = new Bot();
 bot.login();
