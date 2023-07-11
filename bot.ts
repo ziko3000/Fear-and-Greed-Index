@@ -57,6 +57,5 @@ class Bot {
   }
 }
 
+ new Bot().login();
 
-const bot = new Bot();
-bot.login();
