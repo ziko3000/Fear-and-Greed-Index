@@ -1,4 +1,4 @@
-import { Client, SlashCommandBuilder, REST, Routes, EmbedBuilder, Interaction } from 'discord.js';
+import { Client, SlashCommandBuilder, CommandInteraction, REST, Routes, EmbedBuilder, Interaction } from 'discord.js';
 import { FearGreedIndexAPI} from './api';
 
 export class CommandHandler {
@@ -32,13 +32,13 @@ export class CommandHandler {
   }
 
   async handleCommand(interaction: Interaction): Promise<void> {
-    const commandName = interaction.commandName;
-    
+    const commandInteraction = interaction as CommandInteraction;
+    const commandName = commandInteraction.commandName;
     
     if (commandName === 'hello') {
-      await interaction.reply('Hello!');
+      await commandInteraction.reply('Hello!');
     } else if (commandName === 'ping') {
-      await interaction.reply('Pong!');
+      await commandInteraction.reply('Pong!');
     } else if (commandName === 'feargreed') {
       try {
         const fearGreedIndex = await this.api.getFearGreedIndex();
@@ -47,10 +47,10 @@ export class CommandHandler {
           .setDescription(`The current Fear and Greed Index is ${fearGreedIndex}`)
           .setImage('https://alternative.me/crypto/fear-and-greed-index.png');
 
-        await interaction.reply({ embeds: [embed] });
+        await commandInteraction.reply({ embeds: [embed] });
       } catch (error) {
         console.error('Failed to fetch Fear and Greed Index:', error);
-        await interaction.followUp('Failed to fetch Fear and Greed Index.');
+        await commandInteraction.followUp('Failed to fetch Fear and Greed Index.');
       }
     }
   }
