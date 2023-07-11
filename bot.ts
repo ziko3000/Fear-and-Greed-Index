@@ -1,5 +1,4 @@
-import { Client, ActivityType, Interaction } from 'discord.js';
-// import discordjs from 'discord.js';
+import { Client, ActivityType, Interaction, CommandInteraction } from 'discord.js';
 import { FearGreedIndexAPI } from './api';
 import { config as dotenvConfig } from  'dotenv';
 import { CommandHandler } from './commands';
@@ -27,7 +26,7 @@ class Bot {
     console.log(`Logged in as ${this.client.user!.tag}`);
     
     let fearGreedIndex = await this.api.getFearGreedIndex();
-    this.client.user!.setPresence({ activities: [{ name: `Fear and Greed Index: ${fearGreedIndex}`, type: ActivityType.Watching}] });
+    this.client.user!.setPresence({ activities: [{ name: `F&G Index: ${fearGreedIndex}`, type: ActivityType.Watching}] });
     
     try {
       await this.commandHandler.registerCommands(this.client);
@@ -39,7 +38,7 @@ class Bot {
 
   async onInteractionCreate(interaction: Interaction) : Promise<void> {
     if (!interaction.isCommand()) return;
-    await this.commandHandler.handleCommand(interaction);
+    await this.commandHandler.handleCommand(interaction as CommandInteraction);
   }
 
   login() : void {

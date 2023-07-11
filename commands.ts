@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream:commands.ts
 import { Client, SlashCommandBuilder, CommandInteraction, REST, Routes, EmbedBuilder, Interaction } from 'discord.js';
+=======
+import { Client, SlashCommandBuilder, REST, Routes, EmbedBuilder, Interaction, CommandInteraction } from 'discord.js';
+>>>>>>> Stashed changes:src/commands.ts
 import { FearGreedIndexAPI} from './api';
 
 export class CommandHandler {
@@ -31,9 +35,14 @@ export class CommandHandler {
     );
   }
 
+<<<<<<< Updated upstream:commands.ts
   async handleCommand(interaction: Interaction): Promise<void> {
     const commandInteraction = interaction as CommandInteraction;
     const commandName = commandInteraction.commandName;
+=======
+  async handleCommand(interaction: CommandInteraction): Promise<void> {
+    const commandName = interaction.commandName;
+>>>>>>> Stashed changes:src/commands.ts
     
     if (commandName === 'hello') {
       await commandInteraction.reply('Hello!');
@@ -55,5 +64,3 @@ export class CommandHandler {
     }
   }
 }
-
-
