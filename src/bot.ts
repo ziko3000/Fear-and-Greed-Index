@@ -1,22 +1,44 @@
+// Import necessary packages
 import { Client, ActivityType, Interaction, CommandInteraction } from 'discord.js';
 import { FearGreedIndexAPI } from './api';
 import { config as dotenvConfig } from  'dotenv';
 import { CommandHandler } from './commands';
+import { Database } from './database';
 
 // Load environment variables
 dotenvConfig();
 
 /**
- * Class representing the Discord Bot
+ * Represents a Discord Bot.
+ * @constructor
  */
 class Bot {
-  // Initialize class properties
+  /**
+   * The Discord.js client instance.
+   * @type {Client}
+   */
   client: Client = new Client({ intents: 8 });
+
+  /**
+   * The Fear and Greed Index API instance.
+   * @type {FearGreedIndexAPI}
+   */
   api: FearGreedIndexAPI = new FearGreedIndexAPI;
+
+  /**
+   * The command handler instance.
+   * @type {CommandHandler}
+   */
   commandHandler: CommandHandler = new CommandHandler;
 
   /**
-   * Constructs a new Bot instance and sets up event listeners.
+   * The database instance.
+   * @type {Database}
+   */
+  database = new Database();
+
+  /**
+   * @constructs Bot instance and sets up event listeners.
    */
   constructor() {
     this.client.on('ready', () => this.onReady());
@@ -26,7 +48,7 @@ class Bot {
       }
     });
   }
-  
+
   /**
    * Handles the 'ready' event of the Bot. Updates presence and registers commands.
    * @return {Promise<void>}
@@ -34,15 +56,26 @@ class Bot {
   async onReady(): Promise<void> {
     console.log(`Logged in as ${this.client.user!.tag}`);
     this.updateBotPresence();
-    setInterval(this.updateBotPresence.bind(this), 300000); // Update bot presence every 5 minutes
+    setInterval(this.updateBotPresence.bind(this), 30000); // Update bot presence every 30 seconds
     try {
       await this.commandHandler.registerCommands(this.client);
       console.log('Slash commands registered successfully!');
     } catch (error) {
       console.error('Failed to register slash commands:', error);
     }
+    
+    // Store Fear & Greed Index every 24 hours
+    setInterval(async () => {
+      try {
+        const fearGreedIndex = await this.api.getFearGreedIndex();
+        await this.database.storeFearGreedIndex(fearGreedIndex);
+        console.log('Fear & Greed Index stored successfully');
+      } catch (err) {
+        console.error('Failed to store Fear & Greed Index:', err);
+      }
+    }, 86400000); // 24 hours in milliseconds
   }
-  
+
   /**
    * Handles the 'interactionCreate' event of the Bot, if the interaction is a command.
    * @param {Interaction} interaction - The Interaction instance.
@@ -54,7 +87,7 @@ class Bot {
   }
 
   /**
-   * Logins the Bot using the token from environment variables.
+   * Logs in the Bot using the token from environment variables.
    * @return {void}
    */
   login(): void {
