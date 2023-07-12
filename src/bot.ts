@@ -3,7 +3,7 @@ import { Client, ActivityType, Interaction, CommandInteraction } from 'discord.j
 import { FearGreedIndexAPI } from './api';
 import { config as dotenvConfig } from  'dotenv';
 import { CommandHandler } from './commands';
-import { Database } from './database';
+// import { Database } from './database';
 
 // Load environment variables
 dotenvConfig();
