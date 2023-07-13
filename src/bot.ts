@@ -1,5 +1,5 @@
 // Import necessary packages
-import { Client, ActivityType, Interaction, CommandInteraction } from 'discord.js';
+import { Client, ActivityType, Interaction, CommandInteraction, EmbedBuilder } from 'discord.js';
 import { FearGreedIndexAPI } from './api';
 import { config as dotenvConfig } from  'dotenv';
 import { CommandHandler } from './commands';
@@ -108,6 +108,8 @@ class Bot {
       console.error('Failed to update bot presence:', error);
     }
   }
+
+  
 }
 
 // Create a new Bot instance and login
