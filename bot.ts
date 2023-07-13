@@ -3,7 +3,7 @@ import { Client, ActivityType, Interaction, CommandInteraction, EmbedBuilder } f
 import { FearGreedIndexAPI } from './api';
 import { config as dotenvConfig } from  'dotenv';
 import { CommandHandler } from './commands';
-import { Database } from './database';
+// import { Database } from './database';
 
 // Load environment variables
 dotenvConfig();
@@ -35,7 +35,7 @@ class Bot {
    * The database instance.
    * @type {Database}
    */
-  database = new Database();
+  // database = new Database();
 
   /**
    * @constructs Bot instance and sets up event listeners.
@@ -65,15 +65,15 @@ class Bot {
     }
     
     // Store Fear & Greed Index every 24 hours
-    setInterval(async () => {
-      try {
-        const fearGreedIndex = await this.api.getFearGreedIndex();
-        await this.database.storeFearGreedIndex(fearGreedIndex);
-        console.log('Fear & Greed Index stored successfully');
-      } catch (err) {
-        console.error('Failed to store Fear & Greed Index:', err);
-      }
-    }, 86400000); // 24 hours in milliseconds
+    // setInterval(async () => {
+    //   try {
+    //     const fearGreedIndex = await this.api.getFearGreedIndex();
+    //     await this.database.storeFearGreedIndex(fearGreedIndex);
+    //     console.log('Fear & Greed Index stored successfully');
+    //   } catch (err) {
+    //     console.error('Failed to store Fear & Greed Index:', err);
+    //   }
+    // }, 86400000); // 24 hours in milliseconds
   }
 
   /**
