@@ -30,10 +30,10 @@
     constructor() {
       this.commands = new Map<string, BotCommand>();
 
-      this.registerCommand('hello', 'Say hello', new HelloCommand().execute);
-      this.registerCommand('ping', 'Ping the bot', new PingCommand().execute);
-      this.registerCommand('feargreed', 'Get the current Fear and Greed Index', new FearGreedCommand().execute);
-      this.registerCommand('help', 'Get help about the bot and its commands', new HelpCommand().execute);
+      this.registerCommand('hello', 'Say hello', (interaction) => new HelloCommand().execute(interaction));
+      this.registerCommand('ping', 'Ping the bot', (interaction) => new PingCommand().execute(interaction));
+      this.registerCommand('feargreed', 'Get the current Fear and Greed Index', (interaction) => new FearGreedCommand().execute(interaction));
+      this.registerCommand('help', 'Get help about the bot and its commands', (interaction) => new HelpCommand().execute(interaction));
     }
 
     /**
