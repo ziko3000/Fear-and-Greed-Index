@@ -55,7 +55,7 @@ export class BotEvents {
     // Schedule the Fear & Greed Index data storing to run every 24 hours
     setInterval(async () => {
       try {
-        const fearGreedIndex = await FearGreedIndexAPI.getFearGreedIndex();
+        const fearGreedIndex = await this.api.getFearGreedIndex();
         await this.database.storeFearGreedIndex(fearGreedIndex);
         console.log('Fear & Greed Index stored successfully');
       } catch (err) {
@@ -70,7 +70,7 @@ export class BotEvents {
    */
   async updateBotPresence(): Promise<void> {
     try {
-      const fearGreedIndex = await FearGreedIndexAPI.getFearGreedIndex();
+      const fearGreedIndex = await this.api.getFearGreedIndex();
       this.client.user!.setPresence({
         activities: [{ name: `F&G Index: ${fearGreedIndex}`, type: ActivityType.Watching }]
       });
