@@ -21,19 +21,19 @@ export class BotService {
    * This operation is scheduled to run every 24 hours.
    * @return {Promise<void>}
    */
-  async storeFearGreedIndex(): Promise<void> {
-    setInterval(async () => {
-      try {
-        // Fetch the Fear and Greed Index from the API
-        const fearGreedIndex = await this.api.getFearGreedIndex();
+//   async storeFearGreedIndex(): Promise<void> {
+//     setInterval(async () => {
+//       try {
+//         // Fetch the Fear and Greed Index from the API
+//         const fearGreedIndex = await FearGreedIndexAPI.getFearGreedIndex();
 
-        // Store the Fear and Greed Index in the database
-        await this.database.storeFearGreedIndex(fearGreedIndex);
+//         // Store the Fear and Greed Index in the database
+//         await this.database.storeFearGreedIndex(fearGreedIndex);
 
-        console.log('Fear & Greed Index stored successfully');
-      } catch (err) {
-        console.error('Failed to store Fear & Greed Index:', err);
-      }
-    }, 86400000); // 24 hours in milliseconds
-  }
-}
+//         console.log('Fear & Greed Index stored successfully');
+//       } catch (err) {
+//         console.error('Failed to store Fear & Greed Index:', err);
+//       }
+//     }, 86400000); // 24 hours in milliseconds
+//   }
+ }
