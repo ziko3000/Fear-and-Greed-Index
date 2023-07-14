@@ -9,7 +9,7 @@ export class FearGreedIndexAPI {
    * @returns {Promise<string>} The Fear and Greed Index.
    * @throws {Error} When unable to fetch the index.
    */
-  static async getFearGreedIndex(): Promise<string> {
+  async getFearGreedIndex(): Promise<string> {
     try {
       const response: AxiosResponse = await axios.get('https://api.alternative.me/fng/');
       const fearGreedIndex: string = response.data.data[0].value;
