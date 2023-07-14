@@ -1,4 +1,4 @@
-import { CommandInteraction, EmbedBuilder } from 'discord.js';
+import { CommandInteraction, MessageEmbed } from 'discord.js';
 import { FearGreedIndexAPI } from '../api';
 
 export class FearGreedCommand {
@@ -9,10 +9,13 @@ export class FearGreedCommand {
   }
 
   async execute(interaction: CommandInteraction): Promise<void> {
+    let deferSucceeded = false;
     try {
       await interaction.deferReply();
+      deferSucceeded = true; // set this to true after deferring reply
+
       const fearGreedIndex = await this.api.getFearGreedIndex();
-      const embed = new EmbedBuilder()
+      const embed = new MessageEmbed()
         .setTitle('Fear and Greed Index')
         .setDescription(`The current Fear and Greed Index is ${fearGreedIndex}`)
         .setImage('https://alternative.me/crypto/fear-and-greed-index.png');
@@ -20,7 +23,13 @@ export class FearGreedCommand {
       await interaction.editReply({ embeds: [embed] });
     } catch (error) {
       console.error('Failed to fetch Fear and Greed Index:', error);
-      await interaction.reply({ content: 'Failed to fetch Fear and Greed Index.', ephemeral: true });;
+      if (deferSucceeded) {
+        // If the interaction was deferred successfully, edit the deferred reply.
+        await interaction.editReply({ content: 'Failed to fetch Fear and Greed Index.' });
+      } else {
+        // If the interaction was not deferred, reply directly.
+        await interaction.reply({ content: 'Failed to fetch Fear and Greed Index.', ephemeral: true });
+      }
     }
   }
 }
