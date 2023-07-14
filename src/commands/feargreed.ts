@@ -1,4 +1,4 @@
-import { CommandInteraction, MessageEmbed } from 'discord.js';
+import { CommandInteraction, EmbedBuilder } from 'discord.js';
 import { FearGreedIndexAPI } from '../api';
 
 export class FearGreedCommand {
@@ -15,7 +15,7 @@ export class FearGreedCommand {
       deferSucceeded = true; // set this to true after deferring reply
 
       const fearGreedIndex = await this.api.getFearGreedIndex();
-      const embed = new MessageEmbed()
+      const embed = new EmbedBuilder()
         .setTitle('Fear and Greed Index')
         .setDescription(`The current Fear and Greed Index is ${fearGreedIndex}`)
         .setImage('https://alternative.me/crypto/fear-and-greed-index.png');
