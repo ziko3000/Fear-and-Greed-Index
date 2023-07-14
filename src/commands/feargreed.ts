@@ -10,7 +10,7 @@ export class FearGreedCommand {
 
   async execute(interaction: CommandInteraction): Promise<void> {
     try {
-      const fearGreedIndex = await FearGreedIndexAPI.getFearGreedIndex();
+      const fearGreedIndex = await this.api.getFearGreedIndex();
       const embed = new EmbedBuilder()
         .setTitle('Fear and Greed Index')
         .setDescription(`The current Fear and Greed Index is ${fearGreedIndex}`)
