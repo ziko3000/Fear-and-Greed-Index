@@ -1,5 +1,6 @@
-import { CommandInteraction, EmbedBuilder } from 'discord.js';
+import { CommandInteraction } from 'discord.js';
 import { FearGreedIndexAPI } from '../api';
+import { EmbedBuilder } from '@discordjs/builders';
 
 export class FearGreedCommand {
   api: FearGreedIndexAPI;
