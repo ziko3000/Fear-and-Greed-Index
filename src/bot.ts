@@ -56,7 +56,7 @@ class Bot {
    */
   login(): void {
     this.client.login(process.env.BOT_TOKEN);
-    this.botService.storeFearGreedIndex();
+    // this.botService.storeFearGreedIndex();
   }
 }
 
