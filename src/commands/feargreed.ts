@@ -20,7 +20,7 @@ export class FearGreedCommand {
       await interaction.editReply({ embeds: [embed] });
     } catch (error) {
       console.error('Failed to fetch Fear and Greed Index:', error);
-      await interaction.followUp('Failed to fetch Fear and Greed Index.');
+      await interaction.reply({ content: 'Failed to fetch Fear and Greed Index.', ephemeral: true });;
     }
   }
 }
