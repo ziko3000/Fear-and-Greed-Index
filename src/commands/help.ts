@@ -13,13 +13,13 @@ export class HelpCommand {
         { name: '/help', value: '** - Get help about the bot and its commands**' }
     );
 
-    const supportButton = new ButtonBuilder()
+    const row = new ActionRowBuilder<ButtonBuilder>()
+      .addComponents(
+        new ButtonBuilder()
       .setLabel('Support')
       .setURL('https://discord.js.org')
-      .setStyle(ButtonStyle.Link);
-    
-    const row = new ActionRowBuilder<ButtonBuilder>()
-      .addComponents(supportButton);
+      .setStyle(ButtonStyle.Link)
+      );
 
     await interaction.reply({ embeds: [helpEmbed], components: [row] });
   }
