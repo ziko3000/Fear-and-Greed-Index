@@ -84,7 +84,7 @@ To run this project, you'll need to have:
 That's it! You've successfully installed Nodemon on your Linux machine. Now, you can use the `nodemon` command to run your bot:
 
 ```bash
-nodemon src/bot.ts
+    nodemon src/bot.ts
 ```    
 ## 🎈 Usage <a name = "usage"></a>
 
