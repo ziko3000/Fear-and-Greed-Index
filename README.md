@@ -87,6 +87,7 @@ import { MyCommand } from './mycommand';
 
 // In CommandHandler constructor
 this.registerCommand('mycommand', 'This is my command', (interaction) => new MyCommand().execute(interaction));
+```
 
 ## 📄 License <a name = "license"></a>
 This project is licensed under the MIT License - see the LICENSE.md file for details.
