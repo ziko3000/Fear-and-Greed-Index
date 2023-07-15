@@ -5,6 +5,7 @@
   <a href="https://github.com/yourusername">Min Fam</a> and
   <a href="https://github.com/yourusername/Fear-and-Greed-Index-Discord-Bot/graphs/contributors">
     contributors
+    - [Shynggys](https://github.com/salemalem)
   </a>
   </sub>
 </div>
