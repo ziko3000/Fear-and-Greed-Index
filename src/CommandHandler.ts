@@ -1,8 +1,8 @@
   import { Client, SlashCommandBuilder, REST, Routes, CommandInteraction } from 'discord.js';
-  import { HelloCommand } from './hello';
-  import { PingCommand } from './ping';
-  import { FearGreedCommand } from './feargreed';
-  import { HelpCommand } from './help';
+  import { HelloCommand } from './commands/hello';
+  import { PingCommand } from './commands/ping';
+  import { FearGreedCommand } from './commands/feargreed';
+  import { HelpCommand } from './commands/help';
 
   /**
    * Interface for the Bot commands.
