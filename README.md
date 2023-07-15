@@ -66,6 +66,7 @@ To run this project, you'll need to have:
 
     ```
 or on Linux
+
     ```bash
     nodemon bot.ts
     ```
