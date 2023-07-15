@@ -66,9 +66,9 @@ To run this project, you'll need to have:
 
     ```
 or on Linux
-```bash
-nodemon bot.ts
-```
+    ```bash
+    nodemon bot.ts
+    ```
 ## 🎈 Usage <a name = "usage"></a>
 
 This bot supports the following Slash commands:
