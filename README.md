@@ -28,6 +28,8 @@ To run this project, you'll need to have:
 
 - Node.js (version 14.0.0 or newer)
 - A Discord bot token, which you can get by creating a bot on the [Discord Developer Portal](https://discord.com/developers/applications)
+- Discord.js 14
+- Typescript
 - An environment variable file (.env) for your bot token
 
 ### Installing
