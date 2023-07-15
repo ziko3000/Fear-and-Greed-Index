@@ -17,7 +17,7 @@
    * Represents a command handler for a Discord Bot.
    * @constructor
    */
-  export class CommandHandler {
+  export default class CommandHandler {
     /**
      * Map of Bot commands.
      * @type {Map<string, BotCommand>}
