@@ -33,17 +33,6 @@ To run this project, you'll need to have:
 - An environment variable file (.env) for your bot token
 
 ### Installing
-## 🐧 Deploying on Linux (with Nodemon) <a name = "deploying_linux"></a>
-
-[Nodemon](https://nodemon.io/) is a utility that will monitor for any changes in your source and automatically restart your server. Perfect for development.
-
-### Installing Nodemon
-
-First, you need to have Node.js and NPM (Node Package Manager) installed. Once you have those, you can install Nodemon globally by running:
-
-```bash
-npm install -g nodemon
-
 
 1. Clone this repository:
 
