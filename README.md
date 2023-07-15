@@ -85,7 +85,7 @@ That's it! You've successfully installed Nodemon on your Linux machine. Now, you
 
 ```bash
 nodemon src/bot.ts
-    
+```    
 ## 🎈 Usage <a name = "usage"></a>
 
 This bot supports the following Slash commands:
