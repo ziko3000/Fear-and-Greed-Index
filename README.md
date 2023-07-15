@@ -32,7 +32,7 @@ To run this project, you'll need to have:
 - Typescript
 - An environment variable file (.env) for your bot token
 
-### Installing
+### Installing(Windows)
 
 1. Clone this repository:
 
@@ -65,6 +65,27 @@ To run this project, you'll need to have:
     npm run start
 
     ```
+### Installing Nodemon on Linux
+
+[Nodemon](https://nodemon.io/) is a utility that will monitor for any changes in your source and automatically restart your server, perfect for development. Follow these steps to install it on Linux:
+
+1. To install Nodemon globally (available to all your Node.js projects), you can run:
+
+    ```bash
+    npm install -g nodemon
+    ```
+
+    If you're facing permission issues, you may need to prepend `sudo`:
+
+    ```bash
+    sudo npm install -g nodemon
+    ```
+
+That's it! You've successfully installed Nodemon on your Linux machine. Now, you can use the `nodemon` command to run your bot:
+
+```bash
+nodemon src/bot.ts
+    
 ## 🎈 Usage <a name = "usage"></a>
 
 This bot supports the following Slash commands:
