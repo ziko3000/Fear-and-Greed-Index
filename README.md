@@ -2,7 +2,7 @@
 
 <div align="center">
   <sub>Built with ❤︎ by
-  <a href="https://github.com/yourusername">Your Name</a> and
+  <a href="https://github.com/yourusername">Min Fam</a> and
   <a href="https://github.com/yourusername/Fear-and-Greed-Index-Discord-Bot/graphs/contributors">
     contributors
   </a>
@@ -38,7 +38,7 @@ To run this project, you'll need to have:
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/yourusername/your-repo-name.git
+    git clone https://github.com/ziko3000/Fear-and-Greed-Index
     ```
 
 2. Change into the cloned repository:
@@ -90,3 +90,6 @@ import { MyCommand } from './mycommand';
 
 // In CommandHandler constructor
 this.registerCommand('mycommand', 'This is my command', (interaction) => new MyCommand().execute(interaction));
+
+## 📄 License <a name = "license"></a>
+This project is licensed under the MIT License - see the LICENSE.md file for details.
