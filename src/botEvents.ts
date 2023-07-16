@@ -1,6 +1,6 @@
 import { Client, ActivityType, Interaction, CommandInteraction } from 'discord.js';
 import { FearGreedIndexAPI } from './api';
-import { CommandHandler } from './commands/CommandHandler';
+import { CommandHandler } from './CommandHandler';
 import { Database } from './database';
 
 /**

@@ -1,7 +1,6 @@
 import { CommandInteraction, EmbedBuilder } from 'discord.js';
 import { FearGreedIndexAPI } from '../api';
 
-
 export class FearGreedCommand {
   api: FearGreedIndexAPI;
 
@@ -26,7 +25,7 @@ export class FearGreedCommand {
       console.error('Failed to fetch Fear and Greed Index:', error);
       if (deferSucceeded) {
         // If the interaction was deferred successfully, edit the deferred reply.
-        await interaction.editReply({ content: 'Failed to fetch Fear and Greed Index.' });
+        await interaction.editReply({ content: 'Failed to fetch Fear and Greed Index.'});
       } else {
         // If the interaction was not deferred, reply directly.
         await interaction.reply({ content: 'Failed to fetch Fear and Greed Index.', ephemeral: true });

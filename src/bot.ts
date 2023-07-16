@@ -1,6 +1,6 @@
 import { Client } from 'discord.js';
 import { config as dotenvConfig } from  'dotenv';
-import { CommandHandler } from './commands/CommandHandler';
+import { CommandHandler } from './CommandHandler';
 import { FearGreedIndexAPI } from './api';
 import { Database } from './database';
 import { BotEvents } from './botEvents';
