@@ -90,9 +90,8 @@ That's it! You've successfully installed Nodemon on your Linux machine. Now, you
 
 This bot supports the following Slash commands:
 
-- `/hello`: Say hello to the bot.
-- `/ping`: Check the bot's latency.
-- `/feargreed`: Get the current Fear and Greed Index.
+- `/fear`: Get the current Fear and Greed Index.
+- `/greed`: Get the current Fear and Greed Index.
 - `/help`: Get help about the bot and its commands.
 
 ## ⛏️ Adding Commands <a name = "adding_commands"></a>
