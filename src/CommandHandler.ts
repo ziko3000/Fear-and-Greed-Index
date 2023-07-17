@@ -1,7 +1,6 @@
   import { Client, SlashCommandBuilder, REST, Routes, CommandInteraction } from 'discord.js';
-  import { HelloCommand } from './commands/hello';
-  import { PingCommand } from './commands/ping';
-  import { FearGreedCommand } from './commands/feargreed';
+  import { Fear } from './commands/fear';
+  import { Greed } from './commands/greed';
   import { HelpCommand } from './commands/help';
 
   /**
@@ -30,9 +29,8 @@
     constructor() {
       this.commands = new Map<string, BotCommand>();
 
-      this.registerCommand('hello', 'Say hello', (interaction) => new HelloCommand().execute(interaction));
-      this.registerCommand('ping', 'Ping the bot', (interaction) => new PingCommand().execute(interaction));
-      this.registerCommand('feargreed', 'Get the current Fear and Greed Index', (interaction) => new FearGreedCommand().execute(interaction));
+      this.registerCommand('fear', 'Get the current Fear and Greed Index', (interaction) => new Fear().execute(interaction));
+      this.registerCommand('feargreed', 'Get the current Fear and Greed Index', (interaction) => new Greed().execute(interaction));
       this.registerCommand('help', 'Get help about the bot and its commands', (interaction) => new HelpCommand().execute(interaction));
     }
 
