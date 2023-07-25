@@ -32,13 +32,13 @@ export class HelpCommand {
 
         const gitHubButton = new ButtonBuilder()
         .setLabel('GitHub')
-        .setURL('https://github.com/ziko3000/Fear-and-Greed-Index')
+        .setURL('https://github.com/ziko3000')
         .setStyle(ButtonStyle.Link)
         const row2 = new ActionRowBuilder<ButtonBuilder>()
         .addComponents(gitHubButton);
 
         const joinGuildButton = new ButtonBuilder()
-        .setLabel('Support')
+        .setLabel('Join Our Discord')
         .setURL('https://discord.gg/fZjqrAyPVb')
         .setStyle(ButtonStyle.Link)
         const row3 = new ActionRowBuilder<ButtonBuilder>()
