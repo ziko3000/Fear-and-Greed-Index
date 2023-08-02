@@ -1,4 +1,4 @@
-import { Client, ActivityType, Interaction, CommandInteraction } from 'discord.js';
+import { Client, ActivityType, Interaction, CommandInteraction } from 'npm:discord.js';
 import { FearGreedIndexAPI } from './api.ts';
 import { CommandHandler } from './commandHandler.ts';
 
