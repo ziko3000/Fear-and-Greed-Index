@@ -1,7 +1,7 @@
 {
   "imports": {
     "/": "./",
-    "./": "./src/"
+    "./": "./"
   },
   "tasks": {
     "run_bot": "deno run -A --unstable /src/bot.ts",
