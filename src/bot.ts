@@ -1,13 +1,12 @@
-import { Client } from 'discord.js';
-import { config as dotenvConfig } from  'dotenv';
-import { CommandHandler } from './CommandHandler';
-import { FearGreedIndexAPI } from './api';
-import { Database } from './database';
-import { BotEvents } from './botEvents';
-import { BotService } from './botService';
+import { Client } from 'npm:discord.js';
+import { logger } from '/deps.ts';
+import { CommandHandler } from './commandHandler.ts';
+import { FearGreedIndexAPI } from './api.ts';
+import { Database } from './database.ts';
+import { BotEvents } from './botEvents.ts';
+import { BotService } from './botService.ts';
 
-// Load environment variables
-dotenvConfig();
+logger.info('Starting the bot...');
 
 /**
  * Represents the Discord Bot.
@@ -36,26 +35,26 @@ class Bot {
    * The database instance.
    * @type {Database}
    */
-  database: Database = new Database();
+  // database: Database = new Database();
 
   /**
    * The bot events instance.
    * @type {BotEvents}
    */
-  botEvents: BotEvents = new BotEvents(this.client, this.api, this.commandHandler, this.database);
+  botEvents: BotEvents = new BotEvents(this.client, this.api, this.commandHandler);
 
   /**
    * The bot service instance.
    * @type {BotService}
    */
-  botService: BotService = new BotService(this.api, this.database);
+  botService: BotService = new BotService(this.api);
 
   /**
    * Logs in the Bot using the token from environment variables and starts storing Fear & Greed Index.
    * @return {void}
    */
   login(): void {
-    this.client.login(process.env.BOT_TOKEN);
+    this.client.login(Deno.env.get('BOT_TOKEN'));
     // this.botService.storeFearGreedIndex();
   }
 }

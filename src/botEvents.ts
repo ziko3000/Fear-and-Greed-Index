@@ -1,7 +1,6 @@
 import { Client, ActivityType, Interaction, CommandInteraction } from 'discord.js';
-import { FearGreedIndexAPI } from './api';
-import { CommandHandler } from './CommandHandler';
-import { Database } from './database';
+import { FearGreedIndexAPI } from './api.ts';
+import { CommandHandler } from './commandHandler.ts';
 
 /**
  * Class handling bot events.
@@ -15,13 +14,11 @@ export class BotEvents {
   client: Client;
   api: FearGreedIndexAPI;
   commandHandler: CommandHandler;
-  database: Database;
 
-  constructor(client: Client, api: FearGreedIndexAPI, commandHandler: CommandHandler, database: Database) {
+  constructor(client: Client, api: FearGreedIndexAPI, commandHandler: CommandHandler) {
     this.client = client;
     this.api = api;
     this.commandHandler = commandHandler;
-    this.database = database;
 
     // Set up bot event listeners
     this.client.on('ready', () => this.onReady());
@@ -55,8 +52,7 @@ export class BotEvents {
     // Schedule the Fear & Greed Index data storing to run every 24 hours
     setInterval(async () => {
       try {
-        const fearGreedIndex = await this.api.getFearGreedIndex();
-        await this.database.storeFearGreedIndex(fearGreedIndex);
+        const fearGreedIndex = await FearGreedIndexAPI.getFearGreedIndex();
         console.log('Fear & Greed Index stored successfully');
       } catch (err) {
         console.error('Failed to store Fear & Greed Index:', err);
@@ -70,7 +66,7 @@ export class BotEvents {
    */
   async updateBotPresence(): Promise<void> {
     try {
-      const fearGreedIndex = await this.api.getFearGreedIndex();
+      const fearGreedIndex = await FearGreedIndexAPI.getFearGreedIndex();
       this.client.user!.setPresence({
         activities: [{ name: `F&G Index: ${fearGreedIndex}`, type: ActivityType.Watching }]
       });

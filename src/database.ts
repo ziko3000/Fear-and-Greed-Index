@@ -1,7 +1,5 @@
-import { Pool } from 'pg';
-import dotenv from 'dotenv';
-dotenv.config();
-
+import { Pool } from "https://deno.land/x/pg@v0.6.1/mod.ts";
+import { logger } from '/deps.ts';
 
 export class Database {
   private pool: Pool;

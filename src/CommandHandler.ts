@@ -1,7 +1,7 @@
-  import { Client, SlashCommandBuilder, REST, Routes, CommandInteraction } from 'discord.js';
-  import { Fear } from './commands/fear';
-  import { Greed } from './commands/greed';
-  import { HelpCommand } from './commands/help';
+  import { Client, SlashCommandBuilder, REST, Routes, CommandInteraction } from 'npm:discord.js';
+  import { Index } from './commands/index.ts';
+  // import { Greed } from './commands/greed';
+  // import { HelpCommand } from './commands/help';
 
   /**
    * Interface for the Bot commands.
@@ -27,11 +27,15 @@
      * @constructs CommandHandler instance and registers the commands.
      */
     constructor() {
-      this.commands = new Map<string, BotCommand>();
+      try {
+        this.commands = new Map<string, BotCommand>();
 
-      this.registerCommand('fear', 'Get the current Fear and Greed Index', (interaction) => new Fear().execute(interaction));
-      this.registerCommand('feargreed', 'Get the current Fear and Greed Index', (interaction) => new Greed().execute(interaction));
-      this.registerCommand('help', 'Get help about the bot and its commands', (interaction) => new HelpCommand().execute(interaction));
+        this.registerCommand('index', 'Get the current Fear and Greed Index', (interaction) => new Index().execute(interaction));
+        // this.registerCommand('feargreed', 'Get the current Fear and Greed Index', (interaction) => new Greed().execute(interaction));
+        // this.registerCommand('help', 'Get help about the bot and its commands', (interaction) => new HelpCommand().execute(interaction));
+      } catch (error) {
+        console.error(error);
+      }
     }
 
     /**
@@ -42,7 +46,11 @@
      * @return {void}
      */
     registerCommand(name: string, description: string, execute: (interaction: CommandInteraction) => Promise<void>) {
-      this.commands.set(name, { name, description, execute });
+      try {
+        this.commands.set(name, { name, description, execute });
+      } catch (error) {
+        console.error(error);
+      }
     }
 
     /**
@@ -51,15 +59,19 @@
      * @return {Promise<void>}
      */
     async registerCommandsToDiscord(client: Client): Promise<void> {
-      const commandBuilders = Array.from(this.commands.values()).map(
-        ({ name, description }) => new SlashCommandBuilder().setName(name).setDescription(description).toJSON()
-      );
+      try {
+        const commandBuilders = Array.from(this.commands.values()).map(
+          ({ name, description }) => new SlashCommandBuilder().setName(name).setDescription(description).toJSON()
+        );
 
-      const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN!);
-      await rest.put(
-        Routes.applicationCommands(process.env.APPLICATION_ID!),
-        { body: commandBuilders }
-      );
+        const rest = new REST({ version: '10' }).setToken(Deno.env.get('BOT_TOKEN')!);
+        await rest.put(
+          Routes.applicationCommands(Deno.env.get('APPLICATION_ID')!),
+          { body: commandBuilders }
+        );
+      } catch (error) {
+        console.error(error);
+      }
     }
 
     /**
@@ -68,10 +80,10 @@
      * @return {Promise<void>}
      */
     async handleCommand(interaction: CommandInteraction): Promise<void> {
-      const command = this.commands.get(interaction.commandName);
-      if (command) {
-        await command.execute(interaction);
-      } else {
+      try {
+        const command = this.commands.get(interaction.commandName);
+        await command!.execute(interaction);
+      } catch (error) {
         console.error(`Command not found: ${interaction.commandName}`);
       }
     }

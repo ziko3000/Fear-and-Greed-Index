@@ -1,12 +1,7 @@
-import { CommandInteraction, EmbedBuilder } from 'discord.js';
-import { FearGreedIndexAPI } from '../api';
+import { CommandInteraction, EmbedBuilder } from 'npm:discord.js';
+import { FearGreedIndexAPI } from '../api.ts';
 
-export class Fear {
-  api: FearGreedIndexAPI;
-
-  constructor() {
-    this.api = new FearGreedIndexAPI();
-  }
+export class Index {
 
   async execute(interaction: CommandInteraction): Promise<void> {
     let deferSucceeded = false;
@@ -14,7 +9,7 @@ export class Fear {
       await interaction.deferReply();
       deferSucceeded = true; // set this to true after deferring reply
 
-      const fearGreedIndex = await this.api.getFearGreedIndex();
+      const fearGreedIndex = await FearGreedIndexAPI.getFearGreedIndex();
       const embed = new EmbedBuilder()
         .setTitle('Fear and Greed Index')
         .setColor('#0099ff')
@@ -34,3 +29,4 @@ export class Fear {
     }
   }
 }
+
