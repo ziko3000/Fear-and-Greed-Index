@@ -1,10 +1,10 @@
 {
   "imports": {
     "/": "./",
-    "./": "./"
+    "./": "./src/"
   },
   "tasks": {
-    "run_bot": "deno run -A --unstable ./src/bot.ts",
+    "run_bot": "deno run -A --unstable /src/bot.ts",
     "remove_duplicated_follow_id": "deno run -A --unstable /components/removeDuplicateFollowIDs.ts"
   }
 }
