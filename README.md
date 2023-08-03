@@ -69,7 +69,7 @@ deno task run_bot
 ```
 ### Using PM2 to keep bot alive
 
-[PM2](https://www.npmjs.com/package/pm2)PM2 is a process manager for Node.js applications with a built-in load balancer. It allows you to keep applications alive forever and reload them without downtime. It's perfect for production environments. Here are the steps to install it:
+[PM2](https://www.npmjs.com/package/pm2) is a process manager for Node.js applications with a built-in load balancer. It allows you to keep applications alive forever and reload them without downtime. It's perfect for production environments. Here are the steps to install it:
 
 To install PM2 globally (available to all your Node.js/Deno projects), you can run:
 ```bash
