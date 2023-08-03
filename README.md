@@ -14,11 +14,14 @@ A Discord bot that allows you to get the current Fear and Greed Index for crypto
 
 ## 📝 Table of Contents
 
-- [Getting Started](#getting_started)
-- [Usage](#usage)
-- [Adding Commands](#adding_commands)
-- [Contributing](#contributing)
-- [License](#license)
+- [📝 Table of Contents](#-table-of-contents)
+- [🏁 Getting Started ](#-getting-started-)
+  - [Prerequisites](#prerequisites)
+  - [Installing(Windows)](#installingwindows)
+  - [Installing Nodemon on Linux](#installing-nodemon-on-linux)
+- [🎈 Usage ](#-usage-)
+- [⛏️ Adding Commands ](#️-adding-commands-)
+- [📄 License ](#-license-)
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -26,7 +29,7 @@ A Discord bot that allows you to get the current Fear and Greed Index for crypto
 
 To run this project, you'll need to have:
 
-- Node.js (version 14.0.0 or newer)
+- Deno (version 1.34.3 or newer)
 - A Discord bot token, which you can get by creating a bot on the [Discord Developer Portal](https://discord.com/developers/applications)
 - Discord.js 14
 - Typescript
