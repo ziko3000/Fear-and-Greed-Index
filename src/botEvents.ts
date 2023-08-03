@@ -1,6 +1,7 @@
 import { Client, ActivityType, Interaction, CommandInteraction } from 'npm:discord.js';
 import { FearGreedIndexAPI } from './api.ts';
 import { CommandHandler } from './commandHandler.ts';
+import { logger } from '../deps.ts';
 
 /**
  * Class handling bot events.
@@ -48,16 +49,6 @@ export class BotEvents {
     } catch (error) {
       console.error('Failed to register slash commands:', error);
     }
-    
-    // Schedule the Fear & Greed Index data storing to run every 24 hours
-    setInterval(async () => {
-      try {
-        const fearGreedIndex = await FearGreedIndexAPI.getFearGreedIndex();
-        console.log('Fear & Greed Index stored successfully');
-      } catch (err) {
-        console.error('Failed to store Fear & Greed Index:', err);
-      }
-    }, 86400000);
   }
 
   /**
@@ -65,6 +56,7 @@ export class BotEvents {
    * @return {Promise<void>}
    */
   async updateBotPresence(): Promise<void> {
+    logger.info('Updating bot presence...');
     try {
       const fearGreedIndex = await FearGreedIndexAPI.getFearGreedIndex();
       this.client.user!.setPresence({

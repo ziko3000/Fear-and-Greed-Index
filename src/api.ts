@@ -1,4 +1,5 @@
 import axiod, {type IAxiodResponse} from "https://deno.land/x/axiod/mod.ts";
+import { logger } from "../deps.ts";
 
 /**
  * FearGreedIndexAPI class for fetching the Fear and Greed Index from the alternative.me API.
@@ -12,11 +13,11 @@ export class FearGreedIndexAPI {
    * @throws {Error} When unable to fetch the index.
    */
   static async getFearGreedIndex(): Promise<string> {
-    console.log('Fetching Fear and Greed Index...');
     try {
       // Fetch the Fear and Greed Index from the alternative.me API
       const response: IAxiodResponse = await axiod.get(this.APIurl);
       const fearGreedIndex: string = response.data.data[0].value;
+      logger.info(`Fear and Greed Index: ${fearGreedIndex}`);
 
       // Check if fearGreedIndex is a number
       if (isNaN(Number(fearGreedIndex))) {

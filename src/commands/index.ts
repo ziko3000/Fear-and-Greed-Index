@@ -1,9 +1,11 @@
 import { CommandInteraction, EmbedBuilder } from 'npm:discord.js';
 import { FearGreedIndexAPI } from '../api.ts';
+import { logger } from '../../deps.ts';
 
 export class Index {
 
   async execute(interaction: CommandInteraction): Promise<void> {
+    logger.info('Fear and Greed Index command is being executed!');
     let deferSucceeded = false;
     try {
       await interaction.deferReply();

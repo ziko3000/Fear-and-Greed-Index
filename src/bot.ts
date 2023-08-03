@@ -2,11 +2,9 @@ import { Client } from 'npm:discord.js';
 import { logger } from '/deps.ts';
 import { CommandHandler } from './commandHandler.ts';
 import { FearGreedIndexAPI } from './api.ts';
-import { Database } from './database.ts';
 import { BotEvents } from './botEvents.ts';
 import { BotService } from './botService.ts';
 
-logger.info('Starting the bot...');
 
 /**
  * Represents the Discord Bot.
@@ -59,5 +57,6 @@ class Bot {
   }
 }
 
+logger.info('Starting the bot...');
 // Create a new Bot instance and login
 new Bot().login();

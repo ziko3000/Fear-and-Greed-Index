@@ -1,5 +1,4 @@
 import { FearGreedIndexAPI } from './api.ts';
-import { Database } from './database.ts';
 
 /**
  * Service class for bot operations.

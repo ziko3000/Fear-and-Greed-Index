@@ -1,7 +1,8 @@
-  import { Client, SlashCommandBuilder, REST, Routes, CommandInteraction } from 'npm:discord.js';
-  import { Index } from './commands/index.ts';
-  // import { Greed } from './commands/greed';
-  // import { HelpCommand } from './commands/help';
+import { Client, SlashCommandBuilder, REST, Routes, CommandInteraction } from 'npm:discord.js';
+import { Index } from './commands/index.ts';
+import { logger } from '../deps.ts';
+// import { Greed } from './commands/greed';
+// import { HelpCommand } from './commands/help';
 
   /**
    * Interface for the Bot commands.
@@ -46,6 +47,7 @@
      * @return {void}
      */
     registerCommand(name: string, description: string, execute: (interaction: CommandInteraction) => Promise<void>) {
+      logger.info(`Registering command: ${name}`);
       try {
         this.commands.set(name, { name, description, execute });
       } catch (error) {
@@ -59,6 +61,7 @@
      * @return {Promise<void>}
      */
     async registerCommandsToDiscord(client: Client): Promise<void> {
+      logger.info('Registering commands to Discord globally');
       try {
         const commandBuilders = Array.from(this.commands.values()).map(
           ({ name, description }) => new SlashCommandBuilder().setName(name).setDescription(description).toJSON()
@@ -82,6 +85,7 @@
     async handleCommand(interaction: CommandInteraction): Promise<void> {
       try {
         const command = this.commands.get(interaction.commandName);
+        logger.info(`Handling command: ${interaction.commandName}`);
         await command!.execute(interaction);
       } catch (error) {
         console.error(`Command not found: ${interaction.commandName}`);
