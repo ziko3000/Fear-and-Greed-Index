@@ -4,6 +4,6 @@
     "./": "./"
   },
   "tasks": {
-    "run_bot": "denon run -A --unstable /src/bot.ts"
+    "run_bot": "denon run --allow-env --allow-net --allow-read /src/bot.ts"
   }
 }
