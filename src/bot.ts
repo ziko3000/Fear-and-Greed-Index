@@ -1,4 +1,4 @@
-import { Client } from 'npm:discord.js';
+import { Client } from 'discordjs';
 import { logger } from '/deps.ts';
 import { CommandHandler } from './commandHandler.ts';
 import { FearGreedIndexAPI } from './api.ts';

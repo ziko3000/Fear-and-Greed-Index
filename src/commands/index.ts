@@ -1,4 +1,4 @@
-import { CommandInteraction, EmbedBuilder } from 'npm:discord.js';
+import { CommandInteraction, EmbedBuilder } from 'discordjs';
 import { FearGreedIndexAPI } from '../api.ts';
 import { logger } from '../../deps.ts';
 

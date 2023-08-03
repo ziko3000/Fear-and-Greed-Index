@@ -1,4 +1,4 @@
-import axiod, {type IAxiodResponse} from "https://deno.land/x/axiod/mod.ts";
+import axiod, {type IAxiodResponse} from "axiod";
 import { logger } from "../deps.ts";
 
 /**
