@@ -92,7 +92,6 @@ This bot supports the following Slash commands:
 
 - `/index`: Get the current Fear and Greed Index.
 - `/help`: Get help about the bot and its commands.
-- `/server`: Join the server of developer.
 
 ## ⛏️ Adding Commands <a name = "adding_commands"></a>
 

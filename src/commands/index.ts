@@ -1,6 +1,6 @@
 import { CommandInteraction, EmbedBuilder } from 'discordjs';
 import { FearGreedIndexAPI } from '../api.ts';
-import { logger } from '../../deps.ts';
+import { logger } from '/deps.ts';
 
 export class Index {
 

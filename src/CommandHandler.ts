@@ -2,7 +2,7 @@ import { Client, SlashCommandBuilder, REST, Routes, CommandInteraction } from 'd
 import { Index } from './commands/index.ts';
 import { logger } from '../deps.ts';
 // import { Greed } from './commands/greed';
-// import { HelpCommand } from './commands/help';
+import { HelpCommand } from './commands/help';
 
   /**
    * Interface for the Bot commands.
@@ -33,7 +33,7 @@ import { logger } from '../deps.ts';
 
         this.registerCommand('index', 'Get the current Fear and Greed Index', (interaction) => new Index().execute(interaction));
         // this.registerCommand('feargreed', 'Get the current Fear and Greed Index', (interaction) => new Greed().execute(interaction));
-        // this.registerCommand('help', 'Get help about the bot and its commands', (interaction) => new HelpCommand().execute(interaction));
+        this.registerCommand('help', 'Get help about the bot and its commands', (interaction) => new HelpCommand().execute(interaction));
       } catch (error) {
         console.error(error);
       }
