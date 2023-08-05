@@ -49,20 +49,14 @@ git clone https://github.com/ziko3000/Fear-and-Greed-Index
 cd your-repo-name
 ```
 
-3. Install the dependencies:
-
-```bash
-npm install
-```
-
-4. Create an .env file in the root of your project and insert your bot token:
+3. Create an .env file in the root of your project and insert your bot token:
 
 ```env
 BOT_TOKEN=YourDiscordBotToken
 APPLICATION_ID=YourApplicationId
 ```
 
-5. Run the bot:
+4. Run the bot:
 
 ```bash
 deno task run_bot
