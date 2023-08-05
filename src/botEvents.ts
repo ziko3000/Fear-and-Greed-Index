@@ -44,7 +44,7 @@ export class BotEvents {
 
     // Register the slash commands to Discord
     try {
-      await this.commandHandler.registerCommandsToDiscord(this.client);
+      await this.commandHandler.registerCommandsToDiscord();
       console.log('Slash commands registered successfully!');
     } catch (error) {
       console.error('Failed to register slash commands:', error);
