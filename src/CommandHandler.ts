@@ -60,7 +60,7 @@ import { HelpCommand } from './commands/help';
      * @param {Client} client - The Discord.js client instance.
      * @return {Promise<void>}
      */
-    async registerCommandsToDiscord(client: Client): Promise<void> {
+    async registerCommandsToDiscord(): Promise<void> {
       logger.info('Registering commands to Discord globally');
       try {
         const commandBuilders = Array.from(this.commands.values()).map(
